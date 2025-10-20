@@ -4225,7 +4225,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 						externalAdReply: {
 							title: author,
 							body: packname,
-							showAdAttribution: true,
+							showAdAttribution: false,
 							thumbnailUrl: profile,
 							mediaType: 1,
 							previewType: 0,
@@ -4569,6 +4569,7 @@ module.exports = naze = async (naze, m, msg, store) => {
 		}
 	} catch (e) {
 		console.log(e);
+		if (e?.message?.includes('No sessions')) return;
 		const errorKey = e?.code || e?.name || e?.message?.slice(0, 100) || 'unknown_error';
 		const now = Date.now();
 		if (!errorCache[errorKey]) errorCache[errorKey] = [];
